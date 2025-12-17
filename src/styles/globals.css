@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: #45818e;
+    --primary-light: #5a9aa8;
+    --primary-lighter: #a8cfd8;
+    --primary-lightest: #e7f2f4;
+    --primary-dark: #2f5960;
+    --primary-darker: #1a3338;
+    --primary-darkest: #070d0e;
+    
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    font-family: 'Kumbh Sans', sans-serif;
+    @apply bg-white text-gray-900;
+  }
+
+  h1 {
+    font-family: 'Kumbh Sans', sans-serif;
+  }
+
+  h2 {
+    font-family: 'Kumbh Sans', sans-serif;
+  }
+
+  h3 {
+    font-family: 'Kumbh Sans', sans-serif;
+  }
+
+  h4 {
+    font-family: 'Kumbh Sans', sans-serif;
+  }
+
+  p {
+    font-family: 'Kumbh Sans', sans-serif;
+  }
+}
+
+@layer utilities {
+  .grain-bg {
+    position: relative;
+  }
+  
+  .grain-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.08;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .grain-bg > * {
+    position: relative;
+    z-index: 2;
+  }
+}
