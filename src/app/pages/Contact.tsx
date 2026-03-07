@@ -106,7 +106,7 @@ export default function Contact() {
     {
       icon: <Clock className="h-6 w-6" />,
       title: 'Business Hours',
-      content: 'Mon-Fri: 10AM - 7PM IST',
+      content: 'Mon-Sun 09AM - 10PM IST',
       link: null
     },
   ];
