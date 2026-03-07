@@ -20,7 +20,7 @@ export default function LeadForm({
     phone: "",
     website: "",
     budget: "",
-    services: "",
+    services: [] as string[],
     description: "",
   });
 
@@ -30,6 +30,13 @@ export default function LeadForm({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate that at least one service is selected
+    if (formData.services.length === 0) {
+      setError("Please select at least one service.");
+      return;
+    }
+    
     setIsSubmitting(true);
     setError("");
 
@@ -51,7 +58,7 @@ export default function LeadForm({
           phone: formData.phone,
           website: formData.website || "N/A",
           budget: formData.budget,
-          services: formData.services,
+          services: formData.services.join(", "),
           description: formData.description,
           timestamp: new Date().toISOString(),
         }),
@@ -72,7 +79,7 @@ export default function LeadForm({
           phone: "",
           website: "",
           budget: "",
-          services: "",
+          services: [],
           description: "",
         });
       }, 2000);
@@ -93,6 +100,15 @@ export default function LeadForm({
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleServiceChange = (service: string) => {
+    setFormData({
+      ...formData,
+      services: formData.services.includes(service)
+        ? formData.services.filter((s) => s !== service)
+        : [...formData.services, service],
     });
   };
 
@@ -266,38 +282,40 @@ export default function LeadForm({
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="services"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
+                  <label className="block text-sm font-medium text-gray-700 mb-3">
                     Services Needed *
                   </label>
-                  <select
-                    id="services"
-                    name="services"
-                    required
-                    value={formData.services}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1c3439] focus:border-transparent transition-all bg-white"
-                  >
-                    <option value="">Select a service</option>
-                    <option value="Performance Marketing">
-                      Performance Marketing
-                    </option>
-                    <option value="Website Design">
-                      Website Design
-                    </option>
-                    <option value="Creative Design">
-                      Creative Design
-                    </option>
-                    <option value="Video Editing">
-                      Video Editing
-                    </option>
-                    <option value="Blogs">Blogs</option>
-                    <option value="Full Growth Plan">
-                      Full Growth Plan
-                    </option>
-                  </select>
+                  <div className="space-y-2">
+                    {[
+                      "Performance Marketing",
+                      "Website Design",
+                      "Creative Design",
+                      "Video Editing",
+                      "Blogs",
+                      "Full Growth Plan",
+                    ].map((service) => (
+                      <div key={service} className="flex items-center">
+                        <input
+                          type="checkbox"
+                          id={`service-${service}`}
+                          checked={formData.services.includes(service)}
+                          onChange={() => handleServiceChange(service)}
+                          className="h-4 w-4 rounded border-gray-300 text-[#1c3439] focus:ring-[#1c3439]"
+                        />
+                        <label
+                          htmlFor={`service-${service}`}
+                          className="ml-3 text-sm font-medium text-gray-700 cursor-pointer"
+                        >
+                          {service}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                  {formData.services.length === 0 && (
+                    <p className="text-xs text-red-500 mt-2">
+                      Please select at least one service
+                    </p>
+                  )}
                 </div>
 
                 <div>
