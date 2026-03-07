@@ -1,5 +1,5 @@
-import image_f39f7a7cb46f5a4ca2c861ad7ac9d496cfd6be1b from 'figma:asset/f39f7a7cb46f5a4ca2c861ad7ac9d496cfd6be1b.png'
-import image_996c804a9c933ece4d76a0049f31ba416cab95ab from 'figma:asset/996c804a9c933ece4d76a0049f31ba416cab95ab.png'
+import image_f39f7a7cb46f5a4ca2c861ad7ac9d496cfd6be1b from '@/assets/f39f7a7cb46f5a4ca2c861ad7ac9d496cfd6be1b.png'
+import image_996c804a9c933ece4d76a0049f31ba416cab95ab from '@/assets/996c804a9c933ece4d76a0049f31ba416cab95ab.png'
 import { Link } from 'react-router';
 import { motion } from 'motion/react';
 import logo3 from '../../imports/3.svg';
