@@ -3,6 +3,7 @@ import image_996c804a9c933ece4d76a0049f31ba416cab95ab from '@/assets/996c804a9c9
 import { Link } from 'react-router';
 import { motion } from 'motion/react';
 import logo3 from '../../imports/3.svg';
+import { Facebook, Instagram, Linkedin } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -110,6 +111,21 @@ export default function Footer() {
                 </Link>
               </motion.li>
             </ul>
+          </div>
+        </div>
+
+        {/* Social Icons */}
+        <div className="flex justify-center mb-8">
+          <div className="flex space-x-3 mb-4">
+            <a href="https://www.facebook.com/people/HookHunters/61583950663010/" className="w-10 h-10 rounded-lg grain-bg flex items-center justify-center transition-all duration-300 hover:scale-110" style={{ backgroundColor: 'var(--primary)' }}>
+              <Facebook className="w-5 h-5 text-white" />
+            </a>
+            <a href="https://www.instagram.com/hookhunters_/" className="w-10 h-10 rounded-lg grain-bg flex items-center justify-center transition-all duration-300 hover:scale-110" style={{ backgroundColor: 'var(--primary)' }}>
+              <Instagram className="w-5 h-5 text-white" />
+            </a>
+            <a href="https://www.linkedin.com/company/90462776/" className="w-10 h-10 rounded-lg grain-bg flex items-center justify-center transition-all duration-300 hover:scale-110" style={{ backgroundColor: 'var(--primary)' }}>
+              <Linkedin className="w-5 h-5 text-white" />
+            </a>
           </div>
         </div>
 
