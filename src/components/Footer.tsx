@@ -46,20 +46,14 @@ export function Footer() {
           <div>
             <h4 className="text-white mb-4">Connect</h4>
             <div className="flex space-x-3 mb-4">
-              <a href="#" className="w-10 h-10 rounded-lg grain-bg flex items-center justify-center transition-all duration-300 hover:scale-110" style={{ backgroundColor: 'var(--primary)' }}>
+              <a href="https://www.facebook.com/people/HookHunters/61583950663010/" className="w-10 h-10 rounded-lg grain-bg flex items-center justify-center transition-all duration-300 hover:scale-110" style={{ backgroundColor: 'var(--primary)' }}>
                 <Facebook className="w-5 h-5 text-white" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-lg grain-bg flex items-center justify-center transition-all duration-300 hover:scale-110" style={{ backgroundColor: 'var(--primary)' }}>
-                <Twitter className="w-5 h-5 text-white" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-lg grain-bg flex items-center justify-center transition-all duration-300 hover:scale-110" style={{ backgroundColor: 'var(--primary)' }}>
+              <a href="https://www.instagram.com/hookhunters_/" className="w-10 h-10 rounded-lg grain-bg flex items-center justify-center transition-all duration-300 hover:scale-110" style={{ backgroundColor: 'var(--primary)' }}>
                 <Instagram className="w-5 h-5 text-white" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-lg grain-bg flex items-center justify-center transition-all duration-300 hover:scale-110" style={{ backgroundColor: 'var(--primary)' }}>
+              <a href="https://www.linkedin.com/company/90462776/" className="w-10 h-10 rounded-lg grain-bg flex items-center justify-center transition-all duration-300 hover:scale-110" style={{ backgroundColor: 'var(--primary)' }}>
                 <Linkedin className="w-5 h-5 text-white" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-lg grain-bg flex items-center justify-center transition-all duration-300 hover:scale-110" style={{ backgroundColor: 'var(--primary)' }}>
-                <Youtube className="w-5 h-5 text-white" />
               </a>
             </div>
             <p className="text-white/70 text-sm">
