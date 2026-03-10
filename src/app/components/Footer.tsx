@@ -117,14 +117,14 @@ export default function Footer() {
         {/* Social Icons */}
         <div className="flex justify-center mb-8">
           <div className="flex space-x-3 mb-4">
-            <a href="https://www.facebook.com/people/HookHunters/61583950663010/" className="w-10 h-10 rounded-lg grain-bg flex items-center justify-center transition-all duration-300 hover:scale-110" style={{ backgroundColor: 'var(--primary)' }}>
-              <Facebook className="w-5 h-5 text-white" />
+            <a href="https://www.facebook.com/people/HookHunters/61583950663010/" className="w-10 h-10 rounded-lg grain-bg flex items-center justify-center transition-all duration-300 hover:scale-110" style={{ backgroundColor: 'var(--secondary)' }}>
+              <Facebook className="w-5 h-5 text-[#1c3439]" />
             </a>
-            <a href="https://www.instagram.com/hookhunters_/" className="w-10 h-10 rounded-lg grain-bg flex items-center justify-center transition-all duration-300 hover:scale-110" style={{ backgroundColor: 'var(--primary)' }}>
-              <Instagram className="w-5 h-5 text-white" />
+            <a href="https://www.instagram.com/hookhunters_/" className="w-10 h-10 rounded-lg grain-bg flex items-center justify-center transition-all duration-300 hover:scale-110" style={{ backgroundColor: 'var(--secondary)' }}>
+              <Instagram className="w-5 h-5 text-[#1c3439]" />
             </a>
-            <a href="https://www.linkedin.com/company/90462776/" className="w-10 h-10 rounded-lg grain-bg flex items-center justify-center transition-all duration-300 hover:scale-110" style={{ backgroundColor: 'var(--primary)' }}>
-              <Linkedin className="w-5 h-5 text-white" />
+            <a href="https://www.linkedin.com/company/90462776/" className="w-10 h-10 rounded-lg grain-bg flex items-center justify-center transition-all duration-300 hover:scale-110" style={{ backgroundColor: 'var(--secondary)' }}>
+              <Linkedin className="w-5 h-5 text-[#1c3439]" />
             </a>
           </div>
         </div>
