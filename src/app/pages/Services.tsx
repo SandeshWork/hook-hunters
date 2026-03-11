@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { Target, Palette, Video, FileText, Globe, ArrowRight, CheckCircle, Sparkles } from 'lucide-react';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import LeadForm from '../components/LeadForm';
-import creativeDesignImage from 'figma:asset/9d2722fed49d9e485ed188cb3da6d741f589a22a.png';
+import creativeDesignImage from '../../assets/9d2722fed49d9e485ed188cb3da6d741f589a22a.png';
 
 export default function Services() {
   const [isFormOpen, setIsFormOpen] = useState(false);
