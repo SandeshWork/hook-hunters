@@ -1,5 +1,5 @@
-import image_996c804a9c933ece4d76a0049f31ba416cab95ab from '@/assets/996c804a9c933ece4d76a0049f31ba416cab95ab.png'
-import image_dc80f18b4be205b631c74d6ac6b437273c0614a5 from '@/assets/dc80f18b4be205b631c74d6ac6b437273c0614a5.png'
+import image_996c804a9c933ece4d76a0049f31ba416cab95ab from 'figma:asset/996c804a9c933ece4d76a0049f31ba416cab95ab.png'
+import image_dc80f18b4be205b631c74d6ac6b437273c0614a5 from 'figma:asset/dc80f18b4be205b631c74d6ac6b437273c0614a5.png'
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router';
 import { Menu, X } from 'lucide-react';

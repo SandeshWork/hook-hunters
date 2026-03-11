@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { Mail, MapPin, Clock } from 'lucide-react';
+import { Mail, MapPin, Clock, Send, Sparkles, ArrowRight } from 'lucide-react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -10,7 +10,7 @@ export default function Contact() {
     phone: '',
     website: '',
     budget: '',
-    services: [] as string[],
+    services: '',
     description: '',
   });
 
@@ -20,17 +20,13 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.services.length === 0) {
-      setError('Please select at least one service.');
-      return;
-    }
     setIsSubmitting(true);
     setError('');
 
     try {
       // Replace this URL with your actual Google Apps Script Web App URL
-      const GOOGLE_SCRIPT_URL =
-        'https://script.google.com/a/macros/hookhunters.com/s/AKfycby6oiTpuGWhTxdmjLJQg3m84vLfLJL8CHve3l2e4GCKBZ-8IfGDXEAvWv4NV449I5jl/exec';
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/a/macros/hookhunters.com/s/AKfycby6oiTpuGWhTxdmjLJQg3m84vLfLJL8CHve3l2e4GCKBZ-8IfGDXEAvWv4NV449I5jl/exec';
+      
       await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors', // Required for Google Apps Script
@@ -44,15 +40,17 @@ export default function Contact() {
           phone: formData.phone,
           website: formData.website || 'N/A',
           budget: formData.budget,
-          services: formData.services.join(', '),
+          services: formData.services,
           description: formData.description || 'N/A',
           timestamp: new Date().toISOString(),
         }),
       });
 
+      // With mode: 'no-cors', we can't read the response, so assume success
       setIsSubmitting(false);
       setIsSubmitted(true);
 
+      // Reset after 3 seconds
       setTimeout(() => {
         setIsSubmitted(false);
         setFormData({
@@ -62,7 +60,7 @@ export default function Contact() {
           phone: '',
           website: '',
           budget: '',
-          services: [],
+          services: '',
           description: '',
         });
       }, 3000);
@@ -74,20 +72,9 @@ export default function Contact() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleServiceChange = (service: string) => {
-    setFormData({
-      ...formData,
-      services: formData.services.includes(service)
-        ? formData.services.filter((s) => s !== service)
-        : [...formData.services, service],
-    });
   };
 
   const contactInfo = [
@@ -106,27 +93,52 @@ export default function Contact() {
     {
       icon: <Clock className="h-6 w-6" />,
       title: 'Business Hours',
-      content: 'Mon-Sun 09AM - 10PM IST',
+      content: 'Mon-Fri: 10AM - 7PM IST',
       link: null
     },
   ];
 
   return (
-    <div className="pt-20">
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-[#1c3439] to-[#0f1d20] text-white py-24 relative overflow-hidden">
-        <div className="absolute inset-0">
+    <div className="pt-20 bg-[#fafbfc]">
+      {/* Hero - White with blobs */}
+      <section className="relative overflow-hidden bg-[#fafbfc] py-24">
+        {/* Dot Pattern */}
+        <div className="absolute inset-0 opacity-40">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle, #bbd7dd 1px, transparent 1px)`,
+              backgroundSize: '30px 30px',
+            }}
+          />
+        </div>
+
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
             animate={{
+              x: [0, 70, 0],
+              y: [0, -50, 0],
               scale: [1, 1.2, 1],
-              rotate: [0, 90, 0],
             }}
             transition={{
               duration: 20,
               repeat: Infinity,
-              ease: 'linear',
+              ease: 'easeInOut',
             }}
-            className="absolute top-0 right-1/4 w-96 h-96 bg-[#bbd7dd]/10 rounded-full blur-3xl"
+            className="absolute -top-64 -left-64 w-[700px] h-[700px] bg-gradient-to-br from-[#bbd7dd]/30 via-[#bbd7dd]/20 to-transparent rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{
+              x: [0, -60, 0],
+              y: [0, 60, 0],
+              scale: [1, 1.25, 1],
+            }}
+            transition={{
+              duration: 22,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            className="absolute top-1/3 -right-64 w-[650px] h-[650px] bg-gradient-to-bl from-[#bbd7dd]/25 via-[#bbd7dd]/15 to-transparent rounded-full blur-3xl"
           />
         </div>
 
@@ -135,21 +147,57 @@ export default function Contact() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center max-w-3xl mx-auto"
+            className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Let's Start Your Growth Journey
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#bbd7dd]/20 to-[#bbd7dd]/10 backdrop-blur-sm border border-[#bbd7dd]/40 rounded-full text-sm font-medium text-[#1c3439] mb-6"
+            >
+              <Sparkles className="h-4 w-4" />
+              Contact Us
+            </motion.span>
+
+            <h1 className="text-5xl md:text-7xl font-bold text-[#1c3439] mb-6">
+              Let's Start Your{' '}
+              <span className="relative inline-block">
+                Growth Journey
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 0.8, delay: 0.8 }}
+                  className="absolute -bottom-2 left-0 right-0 h-3 bg-gradient-to-r from-[#bbd7dd]/40 to-[#bbd7dd]/20 rounded-full"
+                  style={{ transformOrigin: 'left' }}
+                />
+              </span>
             </h1>
-            <p className="text-xl text-gray-300">
+            <p className="text-xl text-gray-600 leading-relaxed">
               Get in touch to discuss your marketing goals and how we can help you achieve them
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Contact Section - White with blobs */}
+      <section className="relative py-32 bg-white overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div
+            animate={{
+              x: [0, -40, 0],
+              y: [0, 40, 0],
+              scale: [1, 1.15, 1],
+            }}
+            transition={{
+              duration: 24,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            className="absolute top-1/3 -left-48 w-[600px] h-[600px] bg-gradient-to-br from-[#bbd7dd]/15 via-[#bbd7dd]/8 to-transparent rounded-full blur-3xl"
+          />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Info */}
             <motion.div
@@ -159,10 +207,10 @@ export default function Contact() {
               className="space-y-8"
             >
               <div>
-                <h2 className="text-4xl font-bold text-[#1c3439] mb-4">
+                <h2 className="text-5xl font-bold text-[#1c3439] mb-4">
                   Get in Touch
                 </h2>
-                <p className="text-xl text-gray-600">
+                <p className="text-xl text-gray-600 leading-relaxed">
                   Ready to transform your marketing? Let's talk about your goals and create a custom growth plan.
                 </p>
               </div>
@@ -175,25 +223,30 @@ export default function Contact() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 + (index * 0.1) }}
-                    className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
+                    whileHover={{ x: 5, scale: 1.02 }}
+                    className="bg-white rounded-2xl p-6 shadow-lg shadow-gray-200/50 hover:shadow-xl hover:shadow-[#bbd7dd]/20 transition-all duration-300 border border-gray-100"
                   >
                     <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#1c3439] to-[#2a4a52] rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                      <motion.div
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.6 }}
+                        className="w-14 h-14 bg-gradient-to-br from-[#1c3439] to-[#2a4a52] rounded-xl flex items-center justify-center text-white flex-shrink-0 shadow-lg shadow-[#1c3439]/20"
+                      >
                         {info.icon}
-                      </div>
+                      </motion.div>
                       <div>
-                        <h3 className="font-semibold text-[#1c3439] mb-1">
+                        <h3 className="font-bold text-[#1c3439] mb-1 text-lg">
                           {info.title}
                         </h3>
                         {info.link ? (
                           <a
                             href={info.link}
-                            className="text-gray-600 hover:text-[#1c3439] transition-colors"
+                            className="text-gray-600 hover:text-[#1c3439] transition-colors text-lg"
                           >
                             {info.content}
                           </a>
                         ) : (
-                          <p className="text-gray-600">{info.content}</p>
+                          <p className="text-gray-600 text-lg">{info.content}</p>
                         )}
                       </div>
                     </div>
@@ -206,22 +259,43 @@ export default function Contact() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="bg-gradient-to-br from-[#1c3439] to-[#2a4a52] rounded-2xl p-8 text-white"
+                whileHover={{ scale: 1.02 }}
+                className="relative bg-gradient-to-br from-[#1c3439] to-[#2a4a52] rounded-3xl p-8 text-white shadow-2xl shadow-[#1c3439]/30 overflow-hidden"
               >
-                <h3 className="text-2xl font-bold mb-4">
-                  Book a Free Marketing Audit
-                </h3>
-                <p className="text-gray-300 mb-6">
-                  Get a comprehensive analysis of your current marketing efforts and actionable recommendations for growth.
-                </p>
-                <a 
-                  href="https://calendly.com/work-sandeshy/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block px-6 py-3 bg-gradient-to-r from-[#bbd7dd] to-[#a0c9d1] text-[#1c3439] rounded-lg font-semibold hover:shadow-xl hover:shadow-[#bbd7dd]/20 transition-all duration-300 transform hover:scale-105"
-                >
-                  Schedule Free Audit
-                </a>
+                <motion.div
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.3, 0.5, 0.3],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                  className="absolute top-0 right-0 w-64 h-64 bg-[#bbd7dd] rounded-full blur-3xl"
+                />
+                <div className="relative">
+                  <h3 className="text-3xl font-bold mb-4">
+                    Book a Free Marketing Audit
+                  </h3>
+                  <p className="text-gray-200 mb-6 leading-relaxed">
+                    Get a comprehensive analysis of your current marketing efforts and actionable recommendations for growth.
+                  </p>
+                  <a 
+                    href="https://calendly.com/work-sandeshy/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#bbd7dd] to-[#a0c9d1] text-[#1c3439] rounded-xl font-semibold shadow-lg shadow-[#bbd7dd]/30 hover:shadow-xl hover:shadow-[#bbd7dd]/50 transition-all duration-300 group"
+                    >
+                      Schedule Free Audit
+                      <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                    </motion.button>
+                  </a>
+                </div>
               </motion.div>
             </motion.div>
 
@@ -230,9 +304,9 @@ export default function Contact() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="bg-white rounded-2xl p-8 shadow-2xl"
+              className="bg-white rounded-3xl p-10 shadow-2xl shadow-gray-200/50 border border-gray-100"
             >
-              <h3 className="text-3xl font-bold text-[#1c3439] mb-6">
+              <h3 className="text-4xl font-bold text-[#1c3439] mb-8">
                 Send Us a Message
               </h3>
 
@@ -337,40 +411,35 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                  <label htmlFor="services" className="block text-sm font-medium text-gray-700 mb-2">
                     Services Needed *
                   </label>
-                  <div className="space-y-2">
-                    {[
-                      "Performance Marketing",
-                      "Website Design",
-                      "Creative Design",
-                      "Video Editing",
-                      "Blogs",
-                      "Full Growth Plan",
-                    ].map((service) => (
-                      <div key={service} className="flex items-center">
-                        <input
-                          type="checkbox"
-                          id={`service-${service}`}
-                          checked={formData.services.includes(service)}
-                          onChange={() => handleServiceChange(service)}
-                          className="h-4 w-4 rounded border-gray-300 text-[#1c3439] focus:ring-[#1c3439]"
-                        />
-                        <label
-                          htmlFor={`service-${service}`}
-                          className="ml-3 text-sm font-medium text-gray-700 cursor-pointer"
-                        >
-                          {service}
-                        </label>
-                      </div>
-                    ))}
-                  </div>
-                  {formData.services.length === 0 && (
-                    <p className="text-xs text-red-500 mt-2">
-                      Please select at least one service
-                    </p>
-                  )}
+                  <select
+                    id="services"
+                    name="services"
+                    required
+                    value={formData.services}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1c3439] focus:border-transparent transition-all bg-white"
+                  >
+                    <option value="">Select a service</option>
+                    <option value="Performance Marketing">
+                      Performance Marketing
+                    </option>
+                    <option value="Website Design">
+                      Website Design
+                    </option>
+                    <option value="Creative Design">
+                      Creative Design
+                    </option>
+                    <option value="Video Editing">
+                      Video Editing
+                    </option>
+                    <option value="Blogs">Blogs</option>
+                    <option value="Full Growth Plan">
+                      Full Growth Plan
+                    </option>
+                  </select>
                 </div>
 
                 <div>
