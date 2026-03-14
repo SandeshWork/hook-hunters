@@ -1,9 +1,11 @@
-# HookHunters
 
-This is a code bundle for HookHunters. The original project is available at https://www.figma.com/design/8leN8tBeQTqhUjSYgUn2G0/HookHunters.
+  # HookHunters
 
-## Running the code
+  This is a code bundle for HookHunters. The original project is available at https://www.figma.com/design/8leN8tBeQTqhUjSYgUn2G0/HookHunters.
 
-Run `npm i` to install the dependencies.
+  ## Running the code
 
-Run `npm run dev` to start the development server.
+  Run `npm i` to install the dependencies.
+
+  Run `npm run dev` to start the development server.
+  

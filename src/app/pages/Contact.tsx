@@ -121,11 +121,11 @@ export default function Contact() {
               scale: [1, 1.2, 1],
             }}
             transition={{
-              duration: 20,
+              duration: 30,
               repeat: Infinity,
-              ease: 'easeInOut',
+              ease: 'linear',
             }}
-            className="absolute -top-64 -left-64 w-[700px] h-[700px] bg-gradient-to-br from-[#bbd7dd]/30 via-[#bbd7dd]/20 to-transparent rounded-full blur-3xl"
+            className="absolute -top-64 -left-64 w-[700px] h-[700px] bg-gradient-to-br from-[#bbd7dd]/30 via-[#bbd7dd]/20 to-transparent rounded-full blur-3xl md:block hidden"
           />
           <motion.div
             animate={{
@@ -134,11 +134,11 @@ export default function Contact() {
               scale: [1, 1.25, 1],
             }}
             transition={{
-              duration: 22,
+              duration: 35,
               repeat: Infinity,
-              ease: 'easeInOut',
+              ease: 'linear',
             }}
-            className="absolute top-1/3 -right-64 w-[650px] h-[650px] bg-gradient-to-bl from-[#bbd7dd]/25 via-[#bbd7dd]/15 to-transparent rounded-full blur-3xl"
+            className="absolute top-1/3 -right-64 w-[650px] h-[650px] bg-gradient-to-bl from-[#bbd7dd]/25 via-[#bbd7dd]/15 to-transparent rounded-full blur-3xl md:block hidden"
           />
         </div>
 

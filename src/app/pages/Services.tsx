@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { Target, Palette, Video, FileText, Globe, ArrowRight, CheckCircle, Sparkles } from 'lucide-react';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import LeadForm from '../components/LeadForm';
-import creativeDesignImage from '../../assets/9d2722fed49d9e485ed188cb3da6d741f589a22a.png';
+import creativeDesignImage from 'figma:asset/9d2722fed49d9e485ed188cb3da6d741f589a22a.png';
 
 export default function Services() {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -104,16 +104,16 @@ export default function Services() {
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
             animate={{
-              x: [0, 80, 0],
-              y: [0, -60, 0],
+              x: [0, 70, 0],
+              y: [0, -50, 0],
               scale: [1, 1.2, 1],
             }}
             transition={{
-              duration: 20,
+              duration: 30,
               repeat: Infinity,
-              ease: 'easeInOut',
+              ease: 'linear',
             }}
-            className="absolute -top-64 -left-64 w-[700px] h-[700px] bg-gradient-to-br from-[#bbd7dd]/30 via-[#bbd7dd]/20 to-transparent rounded-full blur-3xl"
+            className="absolute -top-64 -left-64 w-[700px] h-[700px] bg-gradient-to-br from-[#bbd7dd]/30 via-[#bbd7dd]/20 to-transparent rounded-full blur-3xl md:block hidden"
           />
           <motion.div
             animate={{
@@ -122,11 +122,11 @@ export default function Services() {
               scale: [1, 1.25, 1],
             }}
             transition={{
-              duration: 22,
+              duration: 35,
               repeat: Infinity,
-              ease: 'easeInOut',
+              ease: 'linear',
             }}
-            className="absolute top-1/3 -right-64 w-[600px] h-[600px] bg-gradient-to-bl from-[#bbd7dd]/25 via-[#bbd7dd]/15 to-transparent rounded-full blur-3xl"
+            className="absolute top-1/3 -right-64 w-[650px] h-[650px] bg-gradient-to-bl from-[#bbd7dd]/25 via-[#bbd7dd]/15 to-transparent rounded-full blur-3xl md:block hidden"
           />
         </div>
 

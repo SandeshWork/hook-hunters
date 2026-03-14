@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 import { ArrowRight, Zap, TrendingUp, Target, Award, Sparkles, CheckCircle, Rocket, BarChart } from 'lucide-react';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import LeadForm from '../components/LeadForm';
-import heroImage from '../../assets/496af83fd146024dbb603d1a42718a6ed5a1b581.png';
+import heroImage from 'figma:asset/496af83fd146024dbb603d1a42718a6ed5a1b581.png';
 
 export default function Home() {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -115,7 +115,7 @@ export default function Home() {
           />
         </div>
 
-        {/* Animated background blobs */}
+        {/* Animated background blobs - reduced on mobile */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
             animate={{
@@ -124,11 +124,11 @@ export default function Home() {
               scale: [1, 1.2, 1],
             }}
             transition={{
-              duration: 20,
+              duration: 30,
               repeat: Infinity,
-              ease: 'easeInOut',
+              ease: 'linear',
             }}
-            className="absolute -top-64 -left-64 w-[600px] h-[600px] bg-gradient-to-br from-[#bbd7dd]/30 via-[#bbd7dd]/20 to-transparent rounded-full blur-3xl"
+            className="absolute -top-64 -left-64 w-[600px] h-[600px] bg-gradient-to-br from-[#bbd7dd]/30 via-[#bbd7dd]/20 to-transparent rounded-full blur-3xl md:block hidden"
           />
           <motion.div
             animate={{
@@ -137,222 +137,102 @@ export default function Home() {
               scale: [1, 1.3, 1],
             }}
             transition={{
-              duration: 25,
+              duration: 35,
               repeat: Infinity,
-              ease: 'easeInOut',
+              ease: 'linear',
             }}
-            className="absolute top-1/4 -right-64 w-[700px] h-[700px] bg-gradient-to-bl from-[#bbd7dd]/25 via-[#bbd7dd]/15 to-transparent rounded-full blur-3xl"
-          />
-          <motion.div
-            animate={{
-              x: [0, 60, 0],
-              y: [0, -40, 0],
-              scale: [1, 1.1, 1],
-            }}
-            transition={{
-              duration: 18,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-            className="absolute bottom-0 left-1/3 w-[500px] h-[500px] bg-gradient-to-tr from-[#bbd7dd]/20 via-[#bbd7dd]/10 to-transparent rounded-full blur-3xl"
+            className="absolute top-1/4 -right-64 w-[700px] h-[700px] bg-gradient-to-bl from-[#bbd7dd]/25 via-[#bbd7dd]/15 to-transparent rounded-full blur-3xl md:block hidden"
           />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="inline-block mb-6"
-                >
-                  <motion.span
-                    animate={{
-                      boxShadow: [
-                        '0 0 20px rgba(187, 215, 221, 0.3)',
-                        '0 0 30px rgba(187, 215, 221, 0.5)',
-                        '0 0 20px rgba(187, 215, 221, 0.3)',
-                      ],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                    }}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#bbd7dd]/20 to-[#bbd7dd]/10 backdrop-blur-sm border border-[#bbd7dd]/40 rounded-full text-sm font-medium text-[#1c3439]"
-                  >
-                    <Sparkles className="h-4 w-4" />
-                    Performance Marketing Agency
-                  </motion.span>
-                </motion.div>
-
-                <h1 className="text-5xl md:text-7xl font-bold leading-tight text-[#1c3439]">
-                  We Turn Clicks Into{' '}
-                  <span className="relative inline-block">
-                    <span className="bg-gradient-to-r from-[#1c3439] via-[#2a4a52] to-[#1c3439] bg-clip-text text-transparent">
-                      Customers
-                    </span>
-                    <motion.div
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ duration: 0.8, delay: 1 }}
-                      className="absolute -bottom-2 left-0 right-0 h-3 bg-gradient-to-r from-[#bbd7dd]/40 to-[#bbd7dd]/20 rounded-full"
-                      style={{ transformOrigin: 'left' }}
-                    />
-                  </span>
-                </h1>
-              </motion.div>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-xl text-gray-600 leading-relaxed"
-              >
-                Performance marketing and creative growth strategies for startups, SaaS, and modern businesses.
-              </motion.p>
-
-              {/* Benefits List */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="grid grid-cols-2 gap-3"
-              >
-                {benefits.map((benefit, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                    whileHover={{ x: 5 }}
-                    className="flex items-center gap-2"
-                  >
-                    <CheckCircle className="h-5 w-5 text-[#bbd7dd] flex-shrink-0" />
-                    <span className="text-sm text-gray-700">{benefit}</span>
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.7 }}
-                className="flex flex-col sm:flex-row gap-4"
-              >
-                <motion.button
-                  onClick={() => setIsFormOpen(true)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group px-8 py-4 bg-gradient-to-r from-[#1c3439] to-[#2a4a52] text-white rounded-xl font-semibold shadow-lg shadow-[#1c3439]/20 hover:shadow-2xl hover:shadow-[#1c3439]/30 transition-all duration-300 flex items-center justify-center relative overflow-hidden"
-                >
-                  <span className="relative z-10 flex items-center">
-                    Get Growth Plan
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-[#2a4a52] to-[#1c3439]"
-                    initial={{ x: '100%' }}
-                    whileHover={{ x: 0 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </motion.button>
-                <Link
-                  to="/services"
-                  className="px-8 py-4 bg-white border-2 border-[#bbd7dd] text-[#1c3439] rounded-xl font-semibold hover:bg-[#bbd7dd]/10 transition-all duration-300 text-center"
-                >
-                  View Services
-                </Link>
-              </motion.div>
-
-              {/* Stats */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.9 }}
-                className="grid grid-cols-3 gap-6 pt-8"
-              >
-                {stats.map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
-                    whileHover={{ y: -5, scale: 1.05 }}
-                    className="text-center p-4 rounded-2xl bg-white/80 backdrop-blur-sm border border-[#bbd7dd]/20 shadow-lg shadow-gray-200/50"
-                  >
-                    <motion.div
-                      initial={{ scale: 1 }}
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 2, delay: 1.5 + index * 0.2, repeat: Infinity, repeatDelay: 3 }}
-                      className="text-3xl font-bold text-[#1c3439] mb-1"
-                    >
-                      {stat.value}
-                    </motion.div>
-                    <div className="text-sm text-gray-600">{stat.label}</div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
-
-            {/* Hero Visual */}
+          <div className="max-w-4xl mx-auto text-center">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, x: 50 }}
-              animate={{ opacity: 1, scale: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="relative"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
             >
               <motion.div
-                animate={{
-                  y: [0, -20, 0],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-                className="relative"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="inline-block mb-6"
               >
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-[#1c3439]/10">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#bbd7dd]/10 to-transparent z-10" />
-                  <ImageWithFallback
-                    src={heroImage}
-                    alt="Professional Business Meeting"
-                    className="w-full h-[550px] object-cover relative z-0"
-                  />
-                </div>
-                {/* Floating decorative elements */}
-                <motion.div
-                  animate={{
-                    y: [0, -15, 0],
-                    rotate: [0, 5, 0],
-                  }}
-                  transition={{
-                    duration: 5,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-                  className="absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-br from-[#bbd7dd] to-[#a0c9d1] rounded-3xl opacity-80 blur-xl"
-                />
-                <motion.div
-                  animate={{
-                    y: [0, 15, 0],
-                    rotate: [0, -5, 0],
-                  }}
-                  transition={{
-                    duration: 7,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-                  className="absolute -bottom-8 -left-8 w-40 h-40 bg-gradient-to-tr from-[#bbd7dd] to-[#a0c9d1] rounded-3xl opacity-60 blur-xl"
-                />
+                <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#bbd7dd]/20 to-[#bbd7dd]/10 backdrop-blur-sm border border-[#bbd7dd]/40 rounded-full text-sm font-medium text-[#1c3439]">
+                  <Sparkles className="h-4 w-4" />
+                  Performance Marketing Agency
+                </span>
               </motion.div>
+
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight text-[#1c3439] mb-6">
+                We Turn Clicks Into{' '}
+                <span className="relative inline-block">
+                  <span className="bg-gradient-to-r from-[#1c3439] via-[#2a4a52] to-[#1c3439] bg-clip-text text-transparent">
+                    Customers
+                  </span>
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 0.8, delay: 0.8 }}
+                    className="absolute -bottom-2 left-0 right-0 h-3 bg-gradient-to-r from-[#bbd7dd]/40 to-[#bbd7dd]/20 rounded-full"
+                    style={{ transformOrigin: 'left' }}
+                  />
+                </span>
+              </h1>
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-8"
+            >
+              Performance marketing and creative growth strategies for startups, SaaS, and modern businesses.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+            >
+              <motion.button
+                onClick={() => setIsFormOpen(true)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="group px-8 py-4 bg-gradient-to-r from-[#1c3439] to-[#2a4a52] text-white rounded-xl font-semibold shadow-lg shadow-[#1c3439]/20 hover:shadow-2xl hover:shadow-[#1c3439]/30 transition-all duration-300 flex items-center justify-center"
+              >
+                <span className="flex items-center">
+                  Get Growth Plan
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </motion.button>
+              <Link
+                to="/services"
+                className="px-8 py-4 bg-white border-2 border-[#bbd7dd] text-[#1c3439] rounded-xl font-semibold hover:bg-[#bbd7dd]/10 transition-all duration-300 text-center"
+              >
+                View Services
+              </Link>
+            </motion.div>
+
+            {/* Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="grid grid-cols-3 gap-3 sm:gap-6 max-w-3xl mx-auto"
+            >
+              {stats.map((stat, index) => (
+                <div
+                  key={index}
+                  className="text-center p-3 sm:p-4 rounded-2xl bg-white/80 backdrop-blur-sm border border-[#bbd7dd]/20 shadow-lg shadow-gray-200/50"
+                >
+                  <div className="text-2xl sm:text-3xl font-bold text-[#1c3439] mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs sm:text-sm text-gray-600">{stat.label}</div>
+                </div>
+              ))}
             </motion.div>
           </div>
         </div>
