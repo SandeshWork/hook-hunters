@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 import { ArrowRight, Zap, TrendingUp, Target, Award, Sparkles, CheckCircle, Rocket, BarChart } from 'lucide-react';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import LeadForm from '../components/LeadForm';
-import heroImage from 'figma:asset/496af83fd146024dbb603d1a42718a6ed5a1b581.png';
+import heroImage from '../../assets/496af83fd146024dbb603d1a42718a6ed5a1b581.png';
 
 export default function Home() {
   const [isFormOpen, setIsFormOpen] = useState(false);
